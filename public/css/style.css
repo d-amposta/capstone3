@@ -93,6 +93,7 @@ img {
 .small img {
 	margin-top: 50%;
 	transform: translateY(-50%);
+	height: 100%;
 }
 
 #avatar,
