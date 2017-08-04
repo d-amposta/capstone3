@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <!-- Left Side -->
-        <div class="col-md-6 col-md-offset-1 welcome_content site_content">
+        <div class="col-sm-6 col-sm-offset-1 welcome_content site_content">
             <h2>Welcome to Interests!</h2>
             <p>Find people with the same interests as you</p>
             <p>Like someone and see if they like you back!</p>
@@ -12,7 +12,7 @@
         </div>
         
         <!-- Right Side -->
-        <div class="col-md-4 welcome_register site_content">
+        <div class="col-sm-4 welcome_register site_content">
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
