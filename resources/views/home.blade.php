@@ -20,7 +20,7 @@
                     <div class="col-xs-12">
                         <a href='{{url("profile")}}'><p class="center">Posts</p></a>
                         <hr>
-                        <a href='{{url("likes/")}}'><p class="center">Likes ({{count($user_likes)}})</p></a>
+                        <a href='{{url("likes")}}'><p class="center">Likes ({{count($user_likes)}})</p></a>
                         <hr>
                         <a href=""><p class="center">Messages</p></a>
                         <hr>
@@ -30,9 +30,11 @@
             </div>
         </div>
     </div>
+
+    <!-- posts -->
     <div class="col-sm-7 site_content">
         @foreach($posts as $post)
-        @if($user_likes->contains($post->user->id))
+        @if($user_likes->contains($post->user->id)) <!-- if a user likes someone -->
             <div class="panel">
                 <div class="panel-body">
                     <div class="row">
@@ -50,7 +52,7 @@
                         <div class="col-xs-12">
                             <p>{{$post->post}}</p>
                             @if(!empty($post->picture))
-                            <img src='/{{$post->picture}}'>
+                                <img src='/{{$post->picture}}'>
                             @endif
                         </div>
                     </div> 
@@ -76,8 +78,10 @@
                                     </form>
                                 </div>
                             </div>
-                        @if($post->reply)
-                           <div id="replies{{$post->id}}">
+                        
+                            <!-- replies -->
+                            @if($post->reply)
+                               <div id="replies{{$post->id}}">
                                     @foreach($post->reply as $reply)
                                         <div class="row">
                                             <div class="col-xs-2 col-md-1">
@@ -94,6 +98,7 @@
                                                 <p class="inline timestamp">{{$reply->created_at->diffForHumans()}}</p>
                                             </div>
                                         </div>
+                                        
                                         <!-- edit-reply -->
                                         <div class="row">
                                             <div class="col-xs-11 col-xs-offset-2 col-md-offset-1">
@@ -120,15 +125,17 @@
                                         </form>
                                     @endforeach
                                 </div><!-- div -->
-                        @endif
-                    </div>
-                </div>
-                </div>    
-            </div>
+                            @endif
+                        </div><!-- col -->
+                    </div><!-- row -->
+                </div><!-- panel-footer -->
+            </div><!-- panel -->
             
         @endif
         @endforeach
-    </div>
+    </div><!-- col -->
+    
+    <!-- suggested friends -->
     <div class="col-sm-2 site_content">
         <div class="panel">
             <div class="panel-body">
@@ -151,11 +158,10 @@
                             </div>
                         @endif
                         @endforeach   
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-    </div>     
-</div>
+                    </div><!-- col -->
+                </div><!-- row -->
+            </div><!-- panel-body -->
+        </div><!-- panel --> 
+    </div><!-- col --> 
+</div><!-- row -->
 @endsection

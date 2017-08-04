@@ -34,6 +34,8 @@
     <div class="col-sm-7 site_content">
         <div class="row">
             <div class="col-xs-12">
+
+                <!-- users -->
                 <div class="panel">
                     <div class="panel-body">
                         @foreach($interests as $user)

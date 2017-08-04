@@ -29,14 +29,14 @@
                         <hr>
                         <a href=""><p class="center">Messages</p></a>
                         <hr>
-                        <a href='{{url("/edit_profile")}}'><p class="center">Edit Profile</p></a>
-                        
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                        <a href='{{url("/edit_profile")}}'><p class="center">Edit Profile</p></a>   
+                    </div><!-- col -->
+                </div><!-- row -->
+            </div><!-- panel-body -->
+        </div><!-- panel -->
+    </div><!-- col -->
+
+
 	<div class="col-sm-7 site_content">
 		<div class="row">
 			<div class="col-xs-10 col-xs-offset-1 col-sm-12">
@@ -61,15 +61,17 @@
 					</div>
 					<input type="submit" name="edit_account" value="Edit" class="btn btn-success"></input>
 				</form>
-			</div>
-		</div>
+			</div><!-- col -->
+		</div><!-- row -->
 		<hr>
+
+
 		<div class="row">
 			<div class="col-xs-10 col-xs-offset-1 col-sm-12">
 				<p><strong>Delete Account</strong></p>
 				<a href='{{url("delete_profile")}}'><button class="btn btn-danger">Delete Account</button></a>
-			</div>
-		</div>
-	</div>	
-</div>
+			</div><!-- col -->
+		</div><!-- row -->
+	</div><!-- col -->
+</div><!-- row -->
 @endsection

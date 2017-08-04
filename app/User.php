@@ -50,17 +50,6 @@ class User extends Authenticatable
         $this->userRequests()->attach($user->id);
     }
 
-    /*function pendingRequests() {
-        return $this->theirRequests()->wherePivot('status', 0)->get();
-    }
-
-    function acceptRequest($id) {
-        $this->theirRequests()->where('user_1', $id)->first()->pivot->update(['status'=>1,]);
-    }
-
-    function declineRequest($id) {
-        $this->theirRequests()->detach($id);
-    }*/
 
     function cancelRequest($id) {
         $this->userRequests()->detach($id);
@@ -70,8 +59,4 @@ class User extends Authenticatable
         $this->userRequests()->detach($id);
         $this->theirRequests()->detach($id);
     }
-
-    /*function friends() {
-        return $this->theirRequests()->wherePivot('status', 1)->get()->merge($this->userRequests()->wherePivot('status', 1)->get());
-    }*/
 }

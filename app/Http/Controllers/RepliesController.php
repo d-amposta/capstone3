@@ -28,28 +28,28 @@ class RepliesController extends Controller
       foreach($post->reply as $reply) {
                      
             echo '<div class="row">
-                     <div class="col-xs-1">
+                     <div class="col-xs-2 col-md-1">
                         <div class="small">
                            <a href="">
-                           <img src='.$reply->user->avatar.'>
-                        </a>
+                              <img src='.$reply->user->avatar.'>
+                           </a>
                         </div>
                      </div>
-                     <div class="col-sm-10">
+                     <div class="col-xs-10 col-md-10">
                         <a href='.url("view_user_profile/".$reply->user_id."").'>
-                           <p><strong class="reply">'.$reply->user->name.': </strong></p>
+                           <p class="panel-section-small"><strong class="reply">'.$reply->user->name.': </strong></p>
                         </a>
-                        <p class="inline reply">'.$reply->created_at->diffForHumans().'</p>
+                        <p class="inline reply timestamp">'.$reply->created_at->diffForHumans().'</p>
                      </div>
                   </div>
                   
                   <div class="row">
-                     <div class="col-sm-11 col-sm-offset-1">
+                     <div class="col-xs-11 col-xs-offset-2 col-md-offset-1">
                         <p class="reply">'.$reply->reply.'</p>
-                        <form method="POST" id="editreply'.$reply->id.'"  class="edit_reply" action='.url("edit_reply/$reply->id").' style="display:none">
+                           <form method="POST" id="editreply'.$reply->id.'"  class="edit_reply" action='.url("edit_reply/$reply->id").' style="display:none">
                               '.csrf_field().'
                               <input type="text" name="editreply" value='.$reply->reply.' class="reply"></input>
-                              <input type="submit" value="Edit" class="btn btn-success"></input>
+                              <input type="submit" value="Edit" class="btn btn-success btn-sm"></input>
                            </form>
                      </div>
                   </div>';

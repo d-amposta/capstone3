@@ -18,18 +18,17 @@
 							{{csrf_field()}}
 							<button class="btn btn-success" id="add_friend">Like</button>
 						</form>
+					
 					@elseif(Auth::user()->id == $user->id)
 						<a href='{{url("likes/$user->id")}}'><button class='btn btn-default'>Likes</button></a>
+					
 					@elseif(Auth::user()->id != $user->id && $liked_by->contains(Auth::user()->id))
 						<form method="POST" action='{{url("cancelRequest/$user->id")}}'>
 						{{csrf_field()}}
 						<button class="btn btn-default">You like this person</button>
 						</form>
+					
 					@else
-						<form method="POST" action='{{url("cancelRequest/$user->id")}}'>
-						{{csrf_field()}}
-							<button class="btn btn-default">Friend Request Sent</button>
-						</form>
 						
 					@endif
 
@@ -41,11 +40,11 @@
 						<p class="panel-section">Bio</p>
 						<p>{{$user->bio}}</p>
 					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+				</div><!-- col -->
+			</div><!-- panel-body -->
+		</div><!-- panel -->
+	</div><!-- col -->
+</div><!-- row -->
 
 <div class="row">
 	<div class="col-sm-2 col-sm-offset-1">
@@ -62,6 +61,7 @@
 		</div><!-- panel -->
 	</div><!-- col -->
 	
+	<!-- posts -->
 	<div class="col-sm-7">
         @foreach($posts as $post)
 	        @if($user->id == $post->user_id)
@@ -97,17 +97,19 @@
 	                                <div class="col-xs-11">
 	                                    <form method="POST" action='{{url("add_reply/$post->id")}}'>
                                         {{csrf_field()}}
-                                        <div class="col-xs-9 col-md-9">
-                                            <div class="form-group">
-                                                <input type="text" id='reply{{$post->id}}' name="reply" class="form-control"></input>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-2 col-md-2 button">
-                                            <input type="button" id='replybutton{{$post->id}}' name="submit" value="Post Reply" class="btn btn-success btn-sm" onclick="addReply({{$post->id}})"></input>
-                                        </div> 
-                                    </form>
-	                                </div>
-	                            </div>
+	                                        <div class="col-xs-9 col-md-9">
+	                                            <div class="form-group">
+	                                                <input type="text" id='reply{{$post->id}}' name="reply" class="form-control"></input>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-xs-2 col-md-2 button">
+	                                            <input type="button" id='replybutton{{$post->id}}' name="submit" value="Post Reply" class="btn btn-success btn-sm" onclick="addReply({{$post->id}})"></input>
+	                                        </div> 
+                                    	</form>
+	                                </div><!-- col -->
+	                            </div><!-- row -->
+		                        
+	                            
 		                        @if($post->reply)
 		                           <div id="replies{{$post->id}}">
 	                                    @foreach($post->reply as $reply)
@@ -133,7 +135,7 @@
 	                                                <form method="POST" id="editreply{{$reply->id}}" class="edit_reply" action='{{url("edit_reply/$reply->id")}}' style="display: none">
 	                                                {{csrf_field()}}
 	                                                    <input type="text" name="editreply" value='{{$reply->reply}}' class="reply"></input>
-	                                                    <input type="submit" value="Edit" class="btn btn-success"></input>
+	                                                    <input type="submit" value="Edit" class="btn btn-success btn-sm"></input>
 	                                                </form>
 	                                            </div>
 	                                        </div>
@@ -152,14 +154,14 @@
 	                                    @endforeach
 		                            </div><!-- div -->
 		                        @endif
-	                    	</div>
-	                	</div>
-	                </div>    
-	            </div> 
+	                    	</div><!-- col -->
+	                	</div><!-- row -->
+	                </div><!-- panel-footer --> 
+	            </div> <!-- panel -->
 	        @endif
         @endforeach
-    </div>
-</div>
+    </div><!-- col -->
+</div><!-- row -->
 	
 	
 @endsection

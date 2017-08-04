@@ -113,7 +113,7 @@
 									<form method="POST" action='{{url("edit_post/$post->id")}}' id="editpost{{$post->id}}" class="edit_post">
 									{{csrf_field()}}
 										<input type="text" name="post" value='{{$post->post}}'></input>
-										<input type="submit" name="edit_button{{$post->id}}" value="Edit Post" class="btn btn-success"></input> <!-- i put the submit button here so that it will be seen next to the text input -->
+										<input type="submit" name="edit_button{{$post->id}}" value="Edit Post" class="btn btn-success btn-sm"></input> <!-- i put the submit button here so that it will be seen next to the text input -->
 										@if(!empty($post->picture))
 											<img src='{{$post->picture}}'>
 											<p>Change Photo</p>
@@ -186,7 +186,7 @@
 												<form method="POST" id="editreply{{$reply->id}}" class="edit_reply" action='{{url("edit_reply/$reply->id")}}' style="display: none">
 												{{csrf_field()}}
 													<input type="text" name="editreply" value='{{$reply->reply}}' class="reply"></input>
-													<input type="submit" value="Edit" class="btn btn-success"></input>
+													<input type="submit" value="Edit" class="btn btn-success btn-sm"></input>
 												</form>
 											</div>
 										</div>

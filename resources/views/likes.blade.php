@@ -20,11 +20,13 @@
 					
 				<div class="col-sm-6 user_content">
 					<p class="panel-section"><strong>{{$user->name}}</strong></p>
+					
 					@if(Auth::user()->id != $user->id && !$liked_by->contains(Auth::user()->id))
 						<form method="POST" action='{{url("add_friend/$user->id")}}'>
 							{{csrf_field()}}
 							<button class="btn btn-success" id="add_friend">Like</button>
 						</form>
+
 					@elseif(Auth::user()->id == $user->id)
 						
 					@elseif(Auth::user()->id != $user->id && $liked_by->contains(Auth::user()->id))
@@ -33,10 +35,6 @@
 						<button class="btn btn-default">You like this person</button>
 						</form>
 					@else
-						<form method="POST" action='{{url("cancelRequest/$user->id")}}'>
-						{{csrf_field()}}
-							<button class="btn btn-default">Friend Request Sent</button>
-						</form>
 						
 					@endif
 					<div>
