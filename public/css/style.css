@@ -153,6 +153,10 @@ img {
 	padding-left: 0;
 }
 
+.btn:hover {
+	background: rgb(255,117,135);
+}
+
 .panel-footer {
 	background: white;
 }

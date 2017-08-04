@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 03, 2017 at 10:34 AM
+-- Generation Time: Aug 04, 2017 at 07:42 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.2
 
@@ -40,7 +40,6 @@ CREATE TABLE `friends` (
 
 INSERT INTO `friends` (`id`, `user_1`, `user_2`, `created_at`, `updated_at`) VALUES
 (28, 9, 10, NULL, NULL),
-(31, 9, 12, NULL, NULL),
 (32, 12, 11, NULL, NULL),
 (33, 12, 10, NULL, NULL),
 (35, 9, 11, NULL, NULL);
@@ -140,7 +139,6 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `post`, `picture`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'hi!', '', 9, '2017-07-25 17:46:44', '2017-07-25 18:48:19'),
 (2, 'hi', '', 11, '2017-07-25 17:49:58', '2017-07-25 17:49:58'),
 (9, 'aodusfhboashfklsa', '', 10, '2017-07-31 00:26:34', '2017-07-31 00:26:34'),
 (10, 'salkdhklashfklsaj', '', 10, '2017-07-31 00:26:36', '2017-07-31 00:26:36'),
@@ -153,7 +151,8 @@ INSERT INTO `posts` (`id`, `post`, `picture`, `user_id`, `created_at`, `updated_
 (19, 'sdiufhoisdhf', 'uploads/9/1501566946.jpg', 9, '2017-07-31 21:55:46', '2017-07-31 21:55:46'),
 (20, 'oskhnfoisdjif', 'uploads/10/1501569216.jpg', 10, '2017-07-31 22:33:36', '2017-07-31 22:33:36'),
 (21, 'klasnfklsndfkln', NULL, 9, '2017-08-02 16:01:14', '2017-08-02 16:01:14'),
-(22, 'kjdfkljskldfjds', NULL, 9, '2017-08-03 00:34:04', '2017-08-03 00:34:04');
+(22, 'kjdfkljskldfjdsdsfsdf', NULL, 9, '2017-08-03 00:34:04', '2017-08-03 18:26:02'),
+(24, 'sdfsdfdsf', NULL, 9, '2017-08-03 18:28:33', '2017-08-03 18:28:33');
 
 -- --------------------------------------------------------
 
@@ -183,7 +182,7 @@ INSERT INTO `replies` (`id`, `reply`, `post_id`, `user_id`, `created_at`, `updat
 (10, 'askpjdlkasjd;as', 9, 11, '2017-07-31 00:27:08', '2017-07-31 00:27:08'),
 (12, 'dksfjklpsdjfl;', 20, 10, '2017-07-31 22:33:51', '2017-07-31 22:33:51'),
 (13, 'jtgjht', 20, 10, '2017-07-31 22:47:22', '2017-07-31 22:47:22'),
-(41, 'fdgdfgdfg', 15, 9, '2017-08-02 17:44:23', '2017-08-02 17:44:23'),
+(41, 'fdgdfgdfgdsfsdf', 15, 9, '2017-08-02 17:44:23', '2017-08-03 18:42:32'),
 (45, 'dfsdf', 14, 9, '2017-08-02 17:46:11', '2017-08-02 17:46:11'),
 (46, 'sdgsdg', 14, 9, '2017-08-02 18:42:30', '2017-08-02 18:42:30'),
 (47, 'jkdhfkjdshf', 20, 9, '2017-08-02 22:14:46', '2017-08-02 22:14:46'),
@@ -193,12 +192,17 @@ INSERT INTO `replies` (`id`, `reply`, `post_id`, `user_id`, `created_at`, `updat
 (51, 'sadasdasd', 14, 9, '2017-08-02 22:45:32', '2017-08-02 22:45:32'),
 (52, 'dsfsdfsdf', 15, 9, '2017-08-02 22:46:23', '2017-08-02 22:46:23'),
 (53, 'dfsdfsdf', 20, 9, '2017-08-02 23:11:20', '2017-08-02 23:11:20'),
-(54, 'sdfsdfsdf', 20, 9, '2017-08-02 23:12:27', '2017-08-02 23:12:27'),
+(54, 'sdfsdfsdfasdasd', 20, 9, '2017-08-02 23:12:27', '2017-08-03 18:52:11'),
 (55, 'dsfsdfsdf', 20, 9, '2017-08-02 23:13:31', '2017-08-02 23:13:31'),
-(56, 'dsfsdfsdf', 20, 9, '2017-08-02 23:15:58', '2017-08-02 23:15:58'),
+(56, 'dsfsdfsdfcfdf', 20, 9, '2017-08-02 23:15:58', '2017-08-03 18:07:35'),
 (57, 'sdfsdf', 20, 9, '2017-08-02 23:16:00', '2017-08-02 23:16:00'),
 (58, 'dsfsdfsd', 15, 9, '2017-08-02 23:31:23', '2017-08-02 23:31:23'),
-(59, 'fsdfsdfsdf', 18, 9, '2017-08-02 23:31:34', '2017-08-02 23:31:34');
+(59, 'fsdfsdfsdf', 18, 9, '2017-08-02 23:31:34', '2017-08-02 23:31:34'),
+(60, 'sdgdsgdsg', 20, 9, '2017-08-03 16:08:11', '2017-08-03 16:08:11'),
+(61, 'dfsdfsdfsdf', 20, 9, '2017-08-03 16:47:14', '2017-08-03 16:47:14'),
+(63, 'fsdfsdfsdf', 1, 9, '2017-08-03 18:27:20', '2017-08-03 18:27:20'),
+(67, 'fdsfsdf', 20, 9, '2017-08-03 18:44:42', '2017-08-03 18:44:42'),
+(68, 'sadasdsad', 17, 9, '2017-08-03 18:54:54', '2017-08-03 18:54:54');
 
 -- --------------------------------------------------------
 
@@ -225,7 +229,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `avatar`, `bio`, `interest`, `role`) VALUES
-(9, 'Charlotte Flair', 'charlotte@example.com', '$2y$10$3W1FV9B8f5dTGViPJWXfMOMXCjbQj1n72m/kLqFH1.07XbRdzo9Ly', 'BSYBvaHdgeNVmzsMY2owTTjkW9JXnjbfhC4Nc1fa9PyE2QZeCLfJYXkcL7de', '2017-07-23 17:54:32', '2017-08-01 18:03:15', 'uploads/9/1501637026.png', '4 time Women\'s Champion', 'Being a champion', 'regular'),
+(9, 'Charlotte Flair', 'charlotte@example.com', '$2y$10$3W1FV9B8f5dTGViPJWXfMOMXCjbQj1n72m/kLqFH1.07XbRdzo9Ly', 'Hb16PmnRVpfgmb1f0hNkczNxABEuxwiGajR5vxy0mBo5B0ejB1SK2k4fi64f', '2017-07-23 17:54:32', '2017-08-01 18:03:15', 'uploads/9/1501637026.png', '4 time Women\'s Champion', 'Being a champion', 'regular'),
 (10, 'Becky Lynch', 'becky@example.com', '$2y$10$ewKactJECPlKoYGxoCxX.uhQbjLGSzN4W1ekv4Bsd7iz01e6hrl4e', 'yRYxtg2jtUH8YxUuTvXPmnmkojUsXeLfauDAbXqQKZXujSvhLZKIZ2uM4UoN', '2017-07-23 17:54:47', '2017-08-01 20:17:45', 'uploads/10/1501637358.jpg', 'straight fire lass kicker', 'old fashion lass kicking', 'regular'),
 (11, 'Bayley Bayley', 'bayley@example.com', '$2y$10$TZufOrMJDpbx9jhnknfirOEAbsmbZaox3cpA/yY.z/alL/giJSj2m', 'ULYsplW7YbKGOsFw9e0u4vCwePDmpTHO1SwOx7glQQnfZ12WPdXl84cB8cHh', '2017-07-23 17:56:02', '2017-08-01 17:29:43', 'uploads/11/1501637383.png', ' ', '', 'regular'),
 (12, 'Sasha Banks', 'sasha@example.com', '$2y$10$5I6IFeaMRWiBSifxjCK8TOPZulXHmUzajei8KS1nm8KH6QWIsGQBu', 'vazovTfKz4Bldixi7Klk7bsT2e1lRbjZdFAf2mHZFRhhTJZ0ibTYimKSzCau', '2017-07-23 17:56:18', '2017-08-01 23:12:14', 'uploads/12/1501637401.png', 'boss', 'champ', 'regular'),
@@ -321,12 +325,12 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `replies`
 --
 ALTER TABLE `replies`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 --
 -- AUTO_INCREMENT for table `users`
 --
