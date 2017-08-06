@@ -45,9 +45,7 @@
                                         <div class="panel-body">
                                             <div class="row">
                                                  <div class="col-xs-3">
-                                                    <div class="small">
-                                                        <img src='/{{$user->avatar}}'>
-                                                    </div>
+                                                    <img src='/{{$user->avatar}}'>
                                                 </div>
                                                 <div class="col-xs-7">
                                                     <a href='{{url("view_user_profile/$user->id")}}'><p><strong>{{$user->name}}</strong></p></a>

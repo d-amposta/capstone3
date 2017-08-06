@@ -20,7 +20,7 @@
                     <div class="col-xs-12">
                         <a href='{{url("profile")}}'><p class="center">Posts</p></a>
                         <hr>
-                        <a href='{{url("likes")}}'><p class="center">Likes ({{count($user_likes)}})</p></a>
+                        <a href='{{url("likes/$likes")}}'><p class="center">Likes ({{count($user_likes)}})</p></a>
                         <hr>
                         <a href=""><p class="center">Messages</p></a>
                         <hr>
@@ -39,9 +39,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-xs-2 col-md-1">
-                            <div class="small">
-                                <img src='/{{$post->user->avatar}}'>
-                            </div>
+                            <img src='/{{$post->user->avatar}}'>
                         </div>
                         <div class="col-xs-10 col-md-11">
                             <a href='{{url("view_user_profile/$post->user_id")}}'><p class="panel-section-small"><strong>{{$post->user->name}}</strong></p></a>

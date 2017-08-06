@@ -30,8 +30,9 @@ class HomeController extends Controller
         $user_likes=Auth::user()->userRequests;
         $liked_by=Auth::user()->theirRequests;
         $suggested_friends=User::where('interest', 'LIKE', '%'.Auth::user()->interest.'%')->get();
+        $likes=Auth::user()->id;
         
 
-        return view('home', compact('posts', 'user_likes', 'liked_by', 'suggested_friends'));
+        return view('home', compact('posts', 'user_likes', 'liked_by', 'suggested_friends', 'likes'));
     }
 }
