@@ -79,11 +79,11 @@
 									<div class="panel-body">
 										<div class="row">
 											<div class="col-xs-3">
-												<div class="small">
+												
 													<a href='{{url("view_user_profile/$user->id")}}'>
 														<img src='/{{$user->avatar}}'>
 													</a>
-												</div>
+												
 											</div>
 										
 											<div class="col-xs-7">
@@ -131,11 +131,11 @@
 									<div class="panel-body">
 										<div class="row">
 											<div class="col-xs-3">
-												<div class="small">
+												
 													<a href='{{url("view_user_profile/$like->id")}}'>
 														<img src='/{{$like->avatar}}'>
 													</a>
-												</div>
+												
 											</div>
 											<div class="col-xs-7">
 												<a href='{{url("view_user_profile/$like->id")}}'>

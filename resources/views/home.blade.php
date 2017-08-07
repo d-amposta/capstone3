@@ -83,11 +83,9 @@
                                     @foreach($post->reply as $reply)
                                         <div class="row">
                                             <div class="col-xs-2 col-md-1">
-                                                <div class="small">
-                                                    <a href=''>
-                                                        <img src='{{$reply->user->avatar}}'>
-                                                    </a>
-                                                </div>
+                                                <a href=''>
+                                                    <img src='{{$reply->user->avatar}}'>
+                                                </a>
                                             </div>
                                             <div class="col-xs-10 col-md-10">
                                                 <a href='{{url("view_user_profile/$reply->user_id")}}'>
