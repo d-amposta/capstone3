@@ -1,0 +1,132 @@
+body {
+	background-color: #f2f2f2;
+	font-family: 'Lato', sans-serif;
+	color: #403f3f;
+	font-weight: 300;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+	border: 1px solid #efa9ca;
+	box-shadow: none;
+  	outline: 0 none;
+}
+
+.btn {
+	width: 100%;
+}
+
+.landing-container {
+	background: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+				url("../assets/landing-background.jpg") no-repeat;
+	background-size: cover;
+	height: 100vh;
+}
+
+.landing-container .row {
+	width: 90%;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+
+.landing-content {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top: 13.5%;
+}
+
+.landing-content-header {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.landing-content-header h2 {
+	color: #f2f2f2;
+	font-size: 4.5em;
+	margin-top: 0;
+	text-transform: uppercase;
+}
+
+.landing-content-info p {
+	font-size: 1em;
+}
+
+.landing-form {
+	width: 400px;
+	margin: auto;
+	padding: 10px 15px;
+	position: relative;
+	top: 20%;
+}
+
+.landing-form-header {
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	text-align: center;
+	box-sizing: border-box;
+	color: #f2f2f2;
+}
+
+.landing-nav {
+	padding: 15px 0;
+	margin-bottom: 0;
+	font-size: 1.5em;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.landing-nav:hover {
+	background-color: #fff;
+	color: #403f3f;
+	transition: 0.3s;
+}
+
+.landing-text {
+	margin: 0;
+	padding: 2px 0;
+}
+
+#login-form,
+#signup-form {
+	display: none;
+}
+
+.landing-form-content {
+	background-color: #fff;
+	padding: 20px;
+	text-transform: uppercase;
+}
+
+.landing-form-control {
+	width: 100%;
+	padding: 15px 15px;
+	border: 1px solid #f2f2f2;
+	border-radius: 4px;
+	font-size: 1.1em;
+}
+
+.landing-form-content .btn {
+	background-color: #cc2774;
+	color: #fff;
+	font-weight: 300;
+	text-transform: uppercase;
+}
+
+.landing-form-content .btn:hover {
+	background-color: #cc2774;
+}
+
+.landing-form-content .btn-link {
+	display: block;
+	text-transform: uppercase;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 0;
+}
