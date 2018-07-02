@@ -13,7 +13,7 @@ class Reply extends Model
         'reply', 'post_id', 'user_id',
     ];
     
-    function postreply() {
+    function post() {
     	return $this->belongsTo("App\Post");
     }
 

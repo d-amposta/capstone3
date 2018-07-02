@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Post;
 use App\User;
+use Illuminate\Support\Carbon;
 
 class HomeController extends Controller
 {
@@ -27,12 +28,20 @@ class HomeController extends Controller
     public function index()
     {
         $posts=Post::latest()->get();
-        $user_likes=Auth::user()->userRequests;
-        $liked_by=Auth::user()->theirRequests;
-        $suggested_friends=User::where('interest', 'LIKE', '%'.Auth::user()->interest.'%')->get();
+        $interests=Auth::user()->userRequests;
+        $followers=Auth::user()->theirRequests;
+        $suggested_interests=User::where('interest', 'LIKE', '%'.Auth::user()->interest.'%')->limit(10)->get();
         $likes=Auth::user()->id;
+        $birthdays = Auth::user()->userRequests()->whereRaw('DATE_FORMAT(birthday, "%m-%d") = ?', [Carbon::now()->format('m-d')])->get();
         
 
-        return view('home', compact('posts', 'user_likes', 'liked_by', 'suggested_friends', 'likes'));
+        return view('home', compact('posts', 'interests', 'followers', 'suggested_interests', 'likes', 'birthdays'));
+    }
+
+    public function getPhotosFeed() {
+        $interests = Auth::user()->getInterests;
+        $user_ids = $interests->id;
+
+        return view('photos', compact('interests', 'user_ids'));
     }
 }

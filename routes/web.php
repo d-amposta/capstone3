@@ -20,91 +20,47 @@ Route::get('/', function () {
     return view('auth/register');
 });
 
+Route::get('/login', function() {
+	return redirect('/');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/profile', function() {
-
-	$users=User::all();
-	$user_likes=Auth::user()->userRequests;
-	$liked_by=Auth::user()->theirRequests;
-	/*$pending_requests=Auth::user()->pendingRequests();
-	$friends=Auth::user()->friends();*/
-	$posts=Post::latest()->get();
-	$user=Auth::user()->id;
-	
-	return view('profile', compact('users', 'user_likes', 'liked_by', 'posts', 'user'));
-});
-
-Route::post('add_friend/{id}', function($id) {
+Route::post('add-to-interests/{id}', function($id) {
 	$user=User::find($id);
-	Auth::user()->addFriend($user);
+	Auth::user()->addToInterests($user);
 
 	return back();
 });
 
-Route::post('acceptRequest/{id}', function($id) {
-	Auth::user()->acceptRequest($id);
-
-	return redirect('/profile');
-});
-
-Route::post('declineRequest/{id}', function($id) {
-	Auth::user()->declineRequest($id);
-
-	return redirect('/profile');
-});
-
-Route::post('cancelRequest/{id}', function($id) {
-	Auth::user()->cancelRequest($id);
+Route::post('remove-interest/{id}', function($id) {
+	Auth::user()->removeInterest($id);
 
 	return back();
 });
 
-Route::post('delete_friend/{id}', function($id) {
-	Auth::user()->unFriend($id);
+Route::get('search', 'SearchController@displayResults');
 
-	return back();
-});
+Route::get('{id}', 'UserController@viewProfile')->name('user');
 
-Route::get('search', function(Request $request) {
-	
-	$search = $request->search;
-	$users= User::where('name', 'LIKE', '%'.$search.'%')->get();
-	$interests=User::where('interest', 'LIKE', '%'.$search.'%')->get();
-	$user_likes=Auth::user()->userRequests;
-	$liked_by=Auth::user()->theirRequests;
-	$user=Auth::user()->id;
+Route::get('/{id}/edit/profile', 'UserController@editUser');
 
-	return view('search', compact('search', 'users', 'interests', 'user_likes', 'liked_by', 'user'));
-});
+Route::post('/{id}/edit/profile', 'UserController@saveEditUser');
 
-Route::get('view_user_profile/{id}', function($id) {
-	$user=User::find($id);
-	$user_likes=$user->userRequests;
-	$liked_by=$user->theirRequests;
-	/*$friends=$user->friends();
-	$pending_requests=Auth::user()->pendingRequests();*/
-	$posts=Post::latest()->get();
-
-	return view('view_user_profile', compact('user', 'user_likes', 'liked_by', 'posts'));
-});
-
-Route::get('/edit_profile', 'UserController@editUser');
-
-Route::post('/edit_profile', 'UserController@saveEditUser');
+Route::get('/{id}/account-settings', 'UserController@viewAccountSettings');
 
 Route::get('/delete_profile', function() {
 	$id=Auth::user()->id;
 	$users=User::all();
-	$user_likes=Auth::user()->userRequests;
-	$liked_by=Auth::user()->theirRequests;
+	$interests=Auth::user()->userRequests;
+	$followers=Auth::user()->theirRequests;
 	/*$pending_requests=Auth::user()->pendingRequests();
 	$friends=Auth::user()->friends();*/
 	$posts=Post::latest()->get();
 
-	return view('delete_profile', compact('id', 'users', 'user_likes', 'liked_by', 'posts'));
+	return view('delete_profile', compact('id', 'users', 'interests', 'followers', 'posts'));
 });
 
 Route::post('/delete_profile', 'UserController@deleteUser');
@@ -115,25 +71,34 @@ Route::get('/delete_profile_confirm', function() {
 
 Route::post('new_post', 'PostsController@createNewPost');
 
-Route::post('edit_post/{id}', 'PostsController@editPost');
+Route::get('edit/post/{id}', 'PostsController@viewEditPost');
 
-Route::post('delete_post/{id}', 'PostsController@deletePost');
+Route::post('edit/post/{id}', 'PostsController@editPost');
+
+Route::post('delete/post/{id}', 'PostsController@deletePost');
 
 Route::post('add_reply/{id}', 'RepliesController@showReply');
 
-Route::post('edit_reply/{id}', 'RepliesController@editReply');
+Route::get('edit/reply/{id}', 'RepliesController@editReply');
 
-Route::post('delete_reply/{id}', 'RepliesController@deleteReply');
+Route::post('edit/reply/{id}', 'RepliesController@saveEditReply');
 
-Route::get('/likes/{id}', function($id) {
+Route::post('delete/reply/{id}', 'RepliesController@deleteReply');
 
-	$users=User::all();
-	$user=User::find($id);
-	$user_likes=$user->userRequests;
-	$liked_by=$user->theirRequests;
-	
-	
-	return view('likes', compact('users', 'user', 'user_likes', 'liked_by'));
-});
+Route::get('/{id}/interests', 'UserController@viewInterests');
 
-Route::post('change_profile_picture', 'UserController@changeProfilePicture');
+Route::get('/{id}/followers', 'UserController@viewFollowers');
+
+Route::post('{id}/edit/avatar', 'UserController@updateAvatar');
+
+Route::post('{id}/edit/cover-photo', 'UserController@updateCoverPhoto');
+
+Route::get('post/{id}', 'PostsController@viewPost')->name('post');
+
+Route::get('{id}/photos', 'PostsController@viewPhotos');
+
+Route::get('{id}/events', 'UserController@viewEvents');
+
+Route::get('{id}/suggested-interests', 'UserController@suggestedInterests');
+
+Route::get('{id}/logout', '\App\Http\Controllers\Auth\LoginController@logout');

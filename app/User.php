@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Post;
@@ -17,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'avatar', 'bio', 'interest', 'role',
+        'name', 'email', 'password', 'avatar', 'cover_photo', 'birthday', 'bio', 'interest', 'location', 'role',
     ];
 
     /**
@@ -38,24 +39,39 @@ class User extends Authenticatable
         return $this->belongsToMany('App\User', 'friends', 'user_2', 'user_1');
     }
 
-    function userPosts() {
+    public function getInterests() {
+        return $this->userRequests();
+    }
+
+    public function getFollowers() {
+        return $this->theirRequests();
+    }
+
+    function posts() {
         return $this->hasMany('App\Post', 'user_id');
     }
 
-    function userReplies() {
+    public function getPosts() {
+        return $this->posts()->latest()->get();
+    }
+
+    public function getPhotos() {
+        return $this->posts()->whereNotNull('picture')->latest()->get();
+    }
+
+    public function getLatestPhotos() {
+        return $this->posts()->whereNotNull('picture')->limit(9)->latest()->get();
+    }    
+
+    function replies() {
         return $this->hasMany('App\Reply');
     }
 
-    function addFriend(User $user) {
+    function addToInterests(User $user) {
         $this->userRequests()->attach($user->id);
     }
 
-
-    function cancelRequest($id) {
-        $this->userRequests()->detach($id);
-    }
-
-     function unFriend($id) {
+     function removeInterest($id) {
         $this->userRequests()->detach($id);
         $this->theirRequests()->detach($id);
     }

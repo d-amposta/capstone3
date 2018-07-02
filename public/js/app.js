@@ -37,25 +37,6 @@ $(document).ready(function() {
             token = $('#csrf').val();
             user = $('#user').val();
 
-            $('#add_friend').click(function() {
-                $('#add_friend').html('You like this person');
-            })
-
-            
-
-            $('#edit_reply').click(function() {
-                $('.edit_reply').toggle();
-                $('#edit_reply').html('Close');
-            })
-
-            $('#add_photobutton').click(function() {
-                $('.addphoto').toggle();
-            })
-
-            $('#avatar').click(function() {
-                $('.change_profile_picture').toggle();
-            })
-
             function addPost() {
                 var token = $('#token').val();
                 var post = $('#post').val();

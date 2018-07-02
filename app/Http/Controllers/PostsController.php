@@ -7,6 +7,7 @@ use App\Post;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Reply;
+use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
@@ -29,18 +30,37 @@ class PostsController extends Controller
     	return back();
     }
 
+    function viewPost($id) {
+        $post = Post::find($id);
+
+        return view('post', compact('post'));
+    }
+
+    public function viewPhotos($id) {
+        $user = User::find($id);
+
+        return view('photos', compact('user'));
+    }
+
+    function viewEditPost($id) {
+        $post = Post::find($id);
+
+        return view('edit-post', compact('post'));
+    }
+
     function editPost($id, Request $request) {
     	$post_tbe=Post::find($id);
     	$post_tbe->post=$request->post;
     	$post_tbe->save();
 
-    	return redirect('/profile');
+    	return redirect()->route('post', [$post_tbe]);
     }
 
     function deletePost($id) {
     	$post=Post::find($id);
+        $file=$post->picture;
     	$post->delete();
-
-    	return redirect('/profile');
+    	
+        return back();
     }
 }

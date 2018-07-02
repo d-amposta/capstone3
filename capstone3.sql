@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2017 at 07:42 AM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 7.1.2
+-- Generation Time: May 31, 2018 at 07:45 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -42,7 +44,12 @@ INSERT INTO `friends` (`id`, `user_1`, `user_2`, `created_at`, `updated_at`) VAL
 (28, 9, 10, NULL, NULL),
 (32, 12, 11, NULL, NULL),
 (33, 12, 10, NULL, NULL),
-(35, 9, 11, NULL, NULL);
+(35, 9, 11, NULL, NULL),
+(38, 14, 11, NULL, NULL),
+(47, 14, 10, NULL, NULL),
+(53, 14, 13, NULL, NULL),
+(54, 13, 9, NULL, NULL),
+(55, 13, 14, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -127,7 +134,7 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `posts` (
   `id` int(10) UNSIGNED NOT NULL,
-  `post` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post` text COLLATE utf8mb4_unicode_ci,
   `picture` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -139,20 +146,14 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `post`, `picture`, `user_id`, `created_at`, `updated_at`) VALUES
-(2, 'hi', '', 11, '2017-07-25 17:49:58', '2017-07-25 17:49:58'),
-(9, 'aodusfhboashfklsa', '', 10, '2017-07-31 00:26:34', '2017-07-31 00:26:34'),
-(10, 'salkdhklashfklsaj', '', 10, '2017-07-31 00:26:36', '2017-07-31 00:26:36'),
-(11, 'pdasjflkasjflkjas', '', 12, '2017-07-31 00:27:42', '2017-07-31 00:27:42'),
-(14, 'sdlkfjklsdf', '', 9, '2017-07-31 17:21:43', '2017-07-31 17:21:43'),
-(15, 'sdlfkghljgkjsdf', '', 9, '2017-07-31 17:27:17', '2017-07-31 17:27:17'),
-(16, 'laksfjlkdsnaf', '', 10, '2017-07-31 17:29:27', '2017-07-31 17:29:27'),
-(17, 'dflkgndjgkldfg', 'uploads/11/C:\\xampp\\tmp\\phpCC25.tmp1501566795.jpg', 11, '2017-07-31 21:53:15', '2017-07-31 21:53:15'),
-(18, 'ksodfjposdjpfo', 'uploads/11/1501566909.jpg', 11, '2017-07-31 21:55:09', '2017-07-31 21:55:09'),
-(19, 'sdiufhoisdhf', 'uploads/9/1501566946.jpg', 9, '2017-07-31 21:55:46', '2017-07-31 21:55:46'),
-(20, 'oskhnfoisdjif', 'uploads/10/1501569216.jpg', 10, '2017-07-31 22:33:36', '2017-07-31 22:33:36'),
-(21, 'klasnfklsndfkln', NULL, 9, '2017-08-02 16:01:14', '2017-08-02 16:01:14'),
-(22, 'kjdfkljskldfjdsdsfsdf', NULL, 9, '2017-08-03 00:34:04', '2017-08-03 18:26:02'),
-(24, 'sdfsdfdsf', NULL, 9, '2017-08-03 18:28:33', '2017-08-03 18:28:33');
+(2, 'hi', NULL, 11, '2017-07-25 17:49:58', '2017-07-25 17:49:58'),
+(4, 'This vacation is gonna be good!', NULL, 14, '2018-04-02 22:42:46', '2018-04-02 22:42:46'),
+(5, 'Exhausted', NULL, 9, '2018-04-02 23:05:45', '2018-04-02 23:05:45'),
+(6, 'Pumped', NULL, 10, '2018-04-02 23:06:26', '2018-04-02 23:06:26'),
+(7, NULL, 'uploads/14/1522746217.jpg', 14, '2018-04-03 01:03:37', '2018-04-03 01:03:37'),
+(8, NULL, 'uploads/14/1525927160.jpg', 14, '2018-05-09 20:39:20', '2018-05-09 20:39:20'),
+(9, NULL, 'uploads/14/1525927812.jpg', 14, '2018-05-09 20:50:12', '2018-05-09 20:50:12'),
+(10, 'yo', NULL, 13, '2018-05-25 01:40:51', '2018-05-25 01:40:51');
 
 -- --------------------------------------------------------
 
@@ -175,34 +176,9 @@ CREATE TABLE `replies` (
 
 INSERT INTO `replies` (`id`, `reply`, `post_id`, `user_id`, `created_at`, `updated_at`) VALUES
 (1, 'hi!', 1, 9, '2017-07-25 22:46:18', '2017-07-30 22:38:38'),
-(2, 'hi', 3, 9, '2017-07-25 22:46:34', '2017-07-25 22:46:34'),
 (3, 'hiiii', 2, 9, '2017-07-25 23:54:09', '2017-07-25 23:54:09'),
-(4, 'hiiiii', 2, 9, '2017-07-25 23:54:40', '2017-07-25 23:54:40'),
-(7, 'sadadf', 1, 10, '2017-07-26 21:57:36', '2017-07-26 21:57:36'),
-(10, 'askpjdlkasjd;as', 9, 11, '2017-07-31 00:27:08', '2017-07-31 00:27:08'),
-(12, 'dksfjklpsdjfl;', 20, 10, '2017-07-31 22:33:51', '2017-07-31 22:33:51'),
-(13, 'jtgjht', 20, 10, '2017-07-31 22:47:22', '2017-07-31 22:47:22'),
-(41, 'fdgdfgdfgdsfsdf', 15, 9, '2017-08-02 17:44:23', '2017-08-03 18:42:32'),
-(45, 'dfsdf', 14, 9, '2017-08-02 17:46:11', '2017-08-02 17:46:11'),
-(46, 'sdgsdg', 14, 9, '2017-08-02 18:42:30', '2017-08-02 18:42:30'),
-(47, 'jkdhfkjdshf', 20, 9, '2017-08-02 22:14:46', '2017-08-02 22:14:46'),
-(48, 'dsfsdfdsf', 15, 9, '2017-08-02 22:44:16', '2017-08-02 22:44:16'),
-(49, 'dasdasd', 15, 9, '2017-08-02 22:44:34', '2017-08-02 22:44:34'),
-(50, 'asdasdasd', 15, 9, '2017-08-02 22:45:18', '2017-08-02 22:45:18'),
-(51, 'sadasdasd', 14, 9, '2017-08-02 22:45:32', '2017-08-02 22:45:32'),
-(52, 'dsfsdfsdf', 15, 9, '2017-08-02 22:46:23', '2017-08-02 22:46:23'),
-(53, 'dfsdfsdf', 20, 9, '2017-08-02 23:11:20', '2017-08-02 23:11:20'),
-(54, 'sdfsdfsdfasdasd', 20, 9, '2017-08-02 23:12:27', '2017-08-03 18:52:11'),
-(55, 'dsfsdfsdf', 20, 9, '2017-08-02 23:13:31', '2017-08-02 23:13:31'),
-(56, 'dsfsdfsdfcfdf', 20, 9, '2017-08-02 23:15:58', '2017-08-03 18:07:35'),
-(57, 'sdfsdf', 20, 9, '2017-08-02 23:16:00', '2017-08-02 23:16:00'),
-(58, 'dsfsdfsd', 15, 9, '2017-08-02 23:31:23', '2017-08-02 23:31:23'),
-(59, 'fsdfsdfsdf', 18, 9, '2017-08-02 23:31:34', '2017-08-02 23:31:34'),
-(60, 'sdgdsgdsg', 20, 9, '2017-08-03 16:08:11', '2017-08-03 16:08:11'),
-(61, 'dfsdfsdfsdf', 20, 9, '2017-08-03 16:47:14', '2017-08-03 16:47:14'),
-(63, 'fsdfsdfsdf', 1, 9, '2017-08-03 18:27:20', '2017-08-03 18:27:20'),
-(67, 'fdsfsdf', 20, 9, '2017-08-03 18:44:42', '2017-08-03 18:44:42'),
-(68, 'sadasdsad', 17, 9, '2017-08-03 18:54:54', '2017-08-03 18:54:54');
+(4, 'take a rest!', 5, 14, '2018-05-07 01:04:48', '2018-05-07 01:04:48'),
+(6, 'heyy', 10, 14, '2018-05-28 23:32:52', '2018-05-30 05:28:07');
 
 -- --------------------------------------------------------
 
@@ -214,26 +190,31 @@ CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `birthday` date NOT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `avatar` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `bio` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT ' ',
-  `interest` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+  `avatar` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT 'uploads/default/avatar-default.jpg',
+  `cover_photo` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bio` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT '  ',
+  `interest` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT '  ',
+  `location` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `role` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'regular'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `avatar`, `bio`, `interest`, `role`) VALUES
-(9, 'Charlotte Flair', 'charlotte@example.com', '$2y$10$3W1FV9B8f5dTGViPJWXfMOMXCjbQj1n72m/kLqFH1.07XbRdzo9Ly', 'Hb16PmnRVpfgmb1f0hNkczNxABEuxwiGajR5vxy0mBo5B0ejB1SK2k4fi64f', '2017-07-23 17:54:32', '2017-08-01 18:03:15', 'uploads/9/1501637026.png', '4 time Women\'s Champion', 'Being a champion', 'regular'),
-(10, 'Becky Lynch', 'becky@example.com', '$2y$10$ewKactJECPlKoYGxoCxX.uhQbjLGSzN4W1ekv4Bsd7iz01e6hrl4e', 'yRYxtg2jtUH8YxUuTvXPmnmkojUsXeLfauDAbXqQKZXujSvhLZKIZ2uM4UoN', '2017-07-23 17:54:47', '2017-08-01 20:17:45', 'uploads/10/1501637358.jpg', 'straight fire lass kicker', 'old fashion lass kicking', 'regular'),
-(11, 'Bayley Bayley', 'bayley@example.com', '$2y$10$TZufOrMJDpbx9jhnknfirOEAbsmbZaox3cpA/yY.z/alL/giJSj2m', 'ULYsplW7YbKGOsFw9e0u4vCwePDmpTHO1SwOx7glQQnfZ12WPdXl84cB8cHh', '2017-07-23 17:56:02', '2017-08-01 17:29:43', 'uploads/11/1501637383.png', ' ', '', 'regular'),
-(12, 'Sasha Banks', 'sasha@example.com', '$2y$10$5I6IFeaMRWiBSifxjCK8TOPZulXHmUzajei8KS1nm8KH6QWIsGQBu', 'vazovTfKz4Bldixi7Klk7bsT2e1lRbjZdFAf2mHZFRhhTJZ0ibTYimKSzCau', '2017-07-23 17:56:18', '2017-08-01 23:12:14', 'uploads/12/1501637401.png', 'boss', 'champ', 'regular'),
-(13, 'Tyrion Lannister', 'tyrion@example.com', '$2y$10$1JKZzesuLV5xH7Wm6wzft.EQw/I7jV0M8u0Zl6Tp0zeAjeVF872C6', 'JazPffIA86SVOYxGl2ayGoi9eDGhWhaiPtu4RPfq3vznOEipS3QDaH4v2Ygg', '2017-08-02 00:34:07', '2017-08-02 00:35:48', 'uploads/13/1501662905.jpg', 'fuck Cersei', 'women', 'regular');
+INSERT INTO `users` (`id`, `name`, `email`, `birthday`, `password`, `remember_token`, `created_at`, `updated_at`, `avatar`, `cover_photo`, `bio`, `interest`, `location`, `role`) VALUES
+(9, 'Charlotte Flair', 'charlotte@example.com', '1986-04-05', '$2y$10$3W1FV9B8f5dTGViPJWXfMOMXCjbQj1n72m/kLqFH1.07XbRdzo9Ly', 'DIZRPe9lplJbaZXosJhhMOMRErSCcRNxmqvH8sTrnBndyGQEyiCxT3bq55H8', '2017-07-23 17:54:32', '2017-08-01 18:03:15', 'uploads/9/1501637026.png', NULL, '4 time Women\'s Champion', 'Being a champion', '', 'regular'),
+(10, 'Becky Lynch', 'becky@example.com', '1987-01-30', '$2y$10$ewKactJECPlKoYGxoCxX.uhQbjLGSzN4W1ekv4Bsd7iz01e6hrl4e', 'MQIzW1eGPppWwLSup04DFatpHdwg9I1L20kbPS64qcdFcSpc6gqF4Zdjbxch', '2017-07-23 17:54:47', '2017-08-01 20:17:45', 'uploads/10/1501637358.jpg', NULL, 'straight fire lass kicker', 'old fashion lass kicking', '', 'regular'),
+(11, 'Bayley Bayley', 'bayley@example.com', '1989-06-15', '$2y$10$TZufOrMJDpbx9jhnknfirOEAbsmbZaox3cpA/yY.z/alL/giJSj2m', 'ULYsplW7YbKGOsFw9e0u4vCwePDmpTHO1SwOx7glQQnfZ12WPdXl84cB8cHh', '2017-07-23 17:56:02', '2017-08-01 17:29:43', 'uploads/11/1501637383.png', NULL, ' ', '', '', 'regular'),
+(12, 'Sasha Banks', 'sasha@example.com', '1992-01-26', '$2y$10$5I6IFeaMRWiBSifxjCK8TOPZulXHmUzajei8KS1nm8KH6QWIsGQBu', 'vazovTfKz4Bldixi7Klk7bsT2e1lRbjZdFAf2mHZFRhhTJZ0ibTYimKSzCau', '2017-07-23 17:56:18', '2017-08-01 23:12:14', 'uploads/12/1501637401.png', NULL, 'boss', 'champ', '', 'regular'),
+(13, 'Tyrion Lannister', 'tyrion@example.com', '1998-05-30', '$2y$10$1JKZzesuLV5xH7Wm6wzft.EQw/I7jV0M8u0Zl6Tp0zeAjeVF872C6', 'VDzoTSHQGu7Hxc25Rwh2d62e3Auvz6sftz5vZddJBTx2S7MxtN000CBJZqqz', '2017-08-02 00:34:07', '2017-08-02 00:35:48', 'uploads/13/1501662905.jpg', NULL, 'fuck Cersei', 'women', '', 'regular'),
+(14, 'John Doe', 'johndoe@example.com', '1990-01-08', '$2y$10$CiJCNzADx5Qeqdbc9kaKE..smOTrn0XJhmNX8922HpUfhv3qPUG6G', 'K3il7Q1rz37jN1KO34sB46CEyQy9jGJzcQ1pgbUV8Ybp8ffmcP9HaMOTzGca', '2018-03-19 05:18:34', '2018-05-30 03:21:43', 'uploads/14/1527580972.jpg', 'uploads/14/1527581674.jpg', 'white dude, designer', 'champ', 'CA', 'regular'),
+(15, 'Johnny Doo', 'johnny@email.com', '0000-00-00', '$2y$10$wm5I.y/tCewUR.uM4uLsNe4Q444/kz2GTAxEZqWVj2mFfWxZJb05C', 'UKXMtyBNfEjN7ttEu3XMQPwaRYJVwWg00FUh5c6hEGUyniTpYXVPAKMNoZ0j', '2018-03-27 01:19:08', '2018-03-27 01:19:08', 'uploads/default/avatar-default.jpg', NULL, '  ', ' ', '', 'regular');
 
 -- --------------------------------------------------------
 
@@ -310,37 +291,45 @@ ALTER TABLE `users_interests`
 -- AUTO_INCREMENT for table `friends`
 --
 ALTER TABLE `friends`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+
 --
 -- AUTO_INCREMENT for table `interests`
 --
 ALTER TABLE `interests`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `replies`
 --
 ALTER TABLE `replies`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT for table `users_interests`
 --
 ALTER TABLE `users_interests`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

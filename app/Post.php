@@ -16,7 +16,7 @@ class Post extends Model
     	return $this->belongsTo("App\User");
     }
 
-    function reply() {
+    function replies() {
     	return $this->hasMany('App\Reply', 'post_id');
     }
 
